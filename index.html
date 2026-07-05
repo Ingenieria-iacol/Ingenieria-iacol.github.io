@@ -32,6 +32,7 @@
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
+            cursor: pointer;
         }
         .tab {
             background: none;
@@ -46,12 +47,46 @@
             border-bottom: 2px solid #8b949e;
         }
         .tab.active {
-            border-bottom: 2px solid #f78166; /* Color naranja clásico de GitHub */
+            border-bottom: 2px solid #f78166;
             color: #f0f6fc;
             font-weight: 600;
         }
         .content-section {
             margin-top: 20px;
+        }
+        /* Estilos para las tarjetas y botones de acción */
+        .card {
+            background-color: #161b22;
+            padding: 16px;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card-actions {
+            margin-top: 12px;
+            display: flex;
+            gap: 8px;
+        }
+        .btn-secondary {
+            background-color: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .btn-secondary:hover {
+            background-color: #30363d;
+            border-color: #8b949e;
+        }
+        .more-text {
+            display: none;
+            margin-top: 8px;
         }
     </style>
 </head>
@@ -60,7 +95,7 @@
     <div class="navbar">
         <div style="font-weight: 600; color: #f0f6fc;">🤖 Ind. I.A.Col / Pioneer's Hub</div>
         <div>
-            <a href="#" class="btn-github" onclick="switchTab('acceso')">Ingresar al Hub</a>
+            <a class="btn-github" onclick="switchTab('acceso')">Ingresar al Hub</a>
         </div>
     </div>
 
@@ -70,7 +105,7 @@
 
         <div style="display: flex; border-bottom: 1px solid #30363d; margin-bottom: 24px;">
             <button id="tab-acerca" class="tab active" onclick="switchTab('acerca')">📖 Acerca de</button>
-            <button id="tab-brochure" class="tab" onclick="switchTab('brochure')">💎 Como te ayudamos</button>
+            <button id="tab-brochure" class="tab" onclick="switchTab('brochure')">💎 Brochure</button>
             <button id="tab-acceso" class="tab" onclick="switchTab('acceso')">🔐 Acceso</button>
             <button id="tab-foro" class="tab" onclick="switchTab('foro')">💬 Foro</button>
             <button id="tab-idi" class="tab" onclick="switchTab('idi')">🔬 I+D+i</button>
@@ -87,28 +122,63 @@
             <h3 style="color: #f0f6fc; font-size: 18px; margin-bottom: 16px;">Beneficios de Pertenecer al Hub</h3>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                <div style="background-color: #161b22; padding: 16px; border: 1px solid #30363d; border-radius: 6px;">
-                    <h4 style="margin-top: 0; color: #58a6ff;">💼 Entorno Digital Potenciado</h4>
-                    <p style="font-size: 14px; color: #8b949e; margin-bottom: 0;">Acceso a una cuenta corporativa respaldada por la suite de Google Workspace y almacenamiento de alta capacidad en la nube para asegurar la continuidad de tus proyectos.</p>
+                <div class="card">
+                    <div>
+                        <h4 style="margin-top: 0; color: #58a6ff;">💼 Entorno Digital Potenciado</h4>
+                        <p style="font-size: 14px; color: #8b949e; margin-bottom: 0;">Acceso a una cuenta corporativa respaldada por la suite de Google Workspace y almacenamiento de alta capacidad en la nube.</p>
+                        <div id="text-c1" class="more-text">
+                            <p style="font-size: 14px; color: #8b949e; margin-top: 0;">Este entorno garantiza la continuidad de tus proyectos, copias de seguridad automáticas y herramientas colaborativas empresariales en tiempo real.</p>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://workspace.google.com" target="_blank" class="btn-secondary">Saber más</a>
+                        <button onclick="toggleText('text-c1', this)" class="btn-secondary">Leer más</button>
+                    </div>
                 </div>
 
-                <div style="background-color: #161b22; padding: 16px; border: 1px solid #30363d; border-radius: 6px;">
-                    <h4 style="margin-top: 0; color: #58a6ff;">📊 Gestión de Proyectos (ERP)</h4>
-                    <p style="font-size: 14px; color: #8b949e; margin-bottom: 0;">Plataforma ERP integrada para la administración, seguimiento de hitos, asignación de recursos y control de desarrollos de ingeniería.</p>
+                <div class="card">
+                    <div>
+                        <h4 style="margin-top: 0; color: #58a6ff;">📊 Gestión de Proyectos (ERP)</h4>
+                        <p style="font-size: 14px; color: #8b949e; margin-bottom: 0;">Plataforma ERP integrada para la administración, seguimiento de hitos y control de desarrollos.</p>
+                        <div id="text-c2" class="more-text">
+                            <p style="font-size: 14px; color: #8b949e; margin-top: 0;">Permite la asignación eficiente de recursos, diagramas de Gantt dinámicos y reportes automáticos de rendimiento para el equipo de ingenieros.</p>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <a href="#" class="btn-secondary">Saber más</a>
+                        <button onclick="toggleText('text-c2', this)" class="btn-secondary">Leer más</button>
+                    </div>
                 </div>
 
-                <div style="background-color: #161b22; padding: 16px; border: 1px solid #30363d; border-radius: 6px; grid-column: span 2;">
-                    <h4 style="margin-top: 0; color: #58a6ff;">🧪 Suite de Software ENTALPÍA</h4>
-                    <p style="font-size: 14px; color: #8b949e; margin-bottom: 8px;">Acceso exclusivo a nuestras herramientas propietarias de simulación y cálculo:</p>
-                    <ul style="font-size: 14px; margin-top: 0; padding-left: 20px; color: #c9d1d9;">
-                        <li>🔄 <strong>Modeladores de flujo:</strong> Simulación de dinámicas y fluidos en entornos virtuales.</li>
-                        <li>🧮 <strong>Calculadoras especializadas:</strong> Algoritmos de resolución matemática para problemas complejos.</li>
-                    </ul>
+                <div class="card" style="grid-column: span 2;">
+                    <div>
+                        <h4 style="margin-top: 0; color: #58a6ff;">🧪 Suite de Software ENTALPÍA</h4>
+                        <p style="font-size: 14px; color: #8b949e; margin-bottom: 0;">Acceso exclusivo a nuestras herramientas propietarias de simulación y cálculo técnico avanzado.</p>
+                        <div id="text-c3" class="more-text">
+                            <ul style="font-size: 14px; margin-top: 8px; padding-left: 20px; color: #c9d1d9;">
+                                <li>🔄 <strong>Modeladores de flujo:</strong> Simulación de dinámicas y fluidos en entornos virtuales industriales.</li>
+                                <li>🧮 <strong>Calculadoras especializadas:</strong> Algoritmos de resolución matemática para problemas termodinámicos complejos.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <a href="#" class="btn-secondary">Saber más</a>
+                        <button onclick="toggleText('text-c3', this)" class="btn-secondary">Leer más</button>
+                    </div>
                 </div>
 
-                <div style="background-color: #161b22; padding: 16px; border: 1px solid #30363d; border-radius: 6px; grid-column: span 2;">
-                    <h4 style="margin-top: 0; color: #58a6ff;">🧠 Plan de Fortalecimiento e I+D+i Basado en I.A.</h4>
-                    <p style="font-size: 14px; color: #8b949e; margin-bottom: 0;">Programas de capacitación técnica continua e investigación profunda en principios de ingeniería y termodinámica básica. Todo el ecosistema está asistido y optimizado por inteligencias artificiales entrenadas específicamente para el sector industrial.</p>
+                <div class="card" style="grid-column: span 2;">
+                    <div>
+                        <h4 style="margin-top: 0; color: #58a6ff;">🧠 Plan de Fortalecimiento e I+D+i Basado en I.A.</h4>
+                        <p style="font-size: 14px; color: #8b949e; margin-bottom: 0;">Programas de capacitación técnica continua e investigación profunda en principios de ingeniería.</p>
+                        <div id="text-c4" class="more-text">
+                            <p style="font-size: 14px; color: #8b949e; margin-top: 0;">Estudios avanzados enfocados en termodinámica básica y procesos industriales. Todo el ecosistema está asistido y optimizado por inteligencias artificiales entrenadas específicamente para el sector de la ingeniería moderna.</p>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <a href="#" class="btn-secondary">Saber más</a>
+                        <button onclick="toggleText('text-c4', this)" class="btn-secondary">Leer más</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -131,16 +201,21 @@
 
     <script>
         function switchTab(sectionId) {
-            // Ocultar todas las secciones
             document.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
-            // Quitar estado activo a los botones
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            
-            // Mostrar la sección seleccionada
             document.getElementById(sectionId).style.display = 'block';
-            
-            // Activar el botón correspondiente
             document.getElementById('tab-' + sectionId).classList.add('active');
+        }
+
+        function toggleText(textId, button) {
+            const textElement = document.getElementById(textId);
+            if (textElement.style.display === "block") {
+                textElement.style.display = "none";
+                button.textContent = "Leer más";
+            } else {
+                textElement.style.display = "block";
+                button.textContent = "Leer menos";
+            }
         }
     </script>
 
