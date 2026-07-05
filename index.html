@@ -222,12 +222,10 @@
             }
         }
 
-        // FUNCIÓN REAL: Procesa la credencial devuelta por Google
+        // FUNCIÓN ACTUALIZADA: Valida al usuario y lo redirige a su entorno de trabajo de la organización
         function handleCredentialResponse(response) {
             try {
-                // Decodificamos el token JWT recibido de Google para extraer los datos del usuario
                 const usuario = jwt_decode(response.credential);
-                
                 console.log("Datos del Ingeniero:", usuario);
                 
                 const correo = usuario.email;
@@ -235,15 +233,15 @@
                 
                 // VALIDACIÓN: Verificamos si el correo pertenece a tu dominio de Workspace
                 if (correo.endsWith("@desarrollosdeia.org")) {
-                    alert(`¡Bienvenido al Hub, Ing. ${nombre}!\nAcceso concedido con la cuenta: ${correo}`);
+                    alert(`¡Autenticación exitosa, Ing. ${nombre}!\nRedirigiéndote a tu entorno de trabajo de la organización...`);
                     
-                    // Aquí cambiaremos el estado de la página para mostrar las pestañas protegidas
-                    document.getElementById('foro').innerHTML = `<h2>💬 Foro de Ingenieros</h2><p>Bienvenido ${nombre}. Aquí puedes interactuar con el equipo.</p>`;
-                    document.getElementById('idi').innerHTML = `<h2>🔬 I+D+i</h2><p>Acceso concedido a los modeladores y calculadoras de ENTALPÍA para ${correo}.</p>`;
+                    // OPCIÓN 1: Redirigir al panel central de aplicaciones de Google de tu organización
+                    window.location.href = "https://myaccount.google.com/?authuser=" + encodeURIComponent(correo);
                     
-                    switchTab('foro'); // Redirige automáticamente al Foro una vez logueado
+                    // OPCIÓN 2 (Alternativa): Si prefieres que vayan directo al Google Drive de la empresa, usa esta línea en su lugar:
+                    // window.location.href = "https://drive.google.com/drive/u/0/?authuser=" + encodeURIComponent(correo);
+
                 } else {
-                    // Si el usuario inicia sesión con un Gmail común u otra empresa, se le deniega el acceso
                     alert(`Acceso Denegado.\nEl correo ${correo} no pertenece a la organización desarrollosdeia.org.\n\nPor favor, usa tu cuenta Pioneer corporativa.`);
                 }
             } catch (error) {
