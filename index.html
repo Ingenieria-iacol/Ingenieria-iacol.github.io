@@ -34,6 +34,9 @@
             font-weight: 600;
             cursor: pointer;
         }
+        .btn-github:hover {
+            background-color: #2ea44f;
+        }
         .tab {
             background: none;
             border: none;
@@ -87,6 +90,47 @@
         .more-text {
             display: none;
             margin-top: 8px;
+        }
+        /* Estilos del Formulario de Acceso */
+        .auth-box {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 24px;
+            max-width: 340px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #f0f6fc;
+        }
+        .form-control {
+            width: 100%;
+            padding: 6px 12px;
+            font-size: 14px;
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #c9d1d9;
+            box-sizing: border-box;
+        }
+        .form-control:focus {
+            border-color: #58a6ff;
+            outline: none;
+        }
+        .auth-toggle {
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .auth-toggle:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -184,8 +228,65 @@
         </div>
 
         <div id="acceso" class="content-section" style="display:none;">
-            <h2>Portal de Ingreso</h2>
-            <p>Área para miembros del Hub (Estilo Streaming).</p>
+            <div id="auth-login" class="auth-box">
+                <h3 style="margin-top:0; text-align:center; color:#f0f6fc;">Ingresar al Hub</h3>
+                <form onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label>Correo de Ingeniero Pioneer</label>
+                        <input type="email" class="form-control" placeholder="nombre@ia-col.com" required>
+                    </div>
+                    <div class="form-group">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <label style="margin:0;">Contraseña</label>
+                            <a class="auth-toggle" onclick="switchAuthSubSection('forgot')">¿La olvidaste?</a>
+                        </div>
+                        <input type="password" class="form-control" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn-github" style="width:100%; margin-bottom:16px;">Iniciar Sesión</button>
+                </form>
+                <div style="text-align: center; font-size: 12px; color: #8b949e;">
+                    ¿Nuevo en la plataforma? <a class="auth-toggle" onclick="switchAuthSubSection('register')">Crea una cuenta</a>
+                </div>
+                <hr style="border: 0; border-top: 1px solid #30363d; margin: 16px 0;">
+                <button onclick="switchTab('brochure')" class="btn-secondary" style="width:100%; padding: 8px 0; font-weight:600;">💎 Ver Planes de Membresía</button>
+            </div>
+
+            <div id="auth-register" class="auth-box" style="display:none;">
+                <h3 style="margin-top:0; text-align:center; color:#f0f6fc;">Crear Cuenta</h3>
+                <form onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label>Nombre Completo</label>
+                        <input type="text" class="form-control" placeholder="Ing. Alejandro Silva" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo Electrónico</label>
+                        <input type="email" class="form-control" placeholder="correo@ejemplo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña Nueva</label>
+                        <input type="password" class="form-control" placeholder="Mínimo 8 caracteres" required>
+                    </div>
+                    <button type="submit" class="btn-github" style="width:100%; margin-bottom:16px; background-color:#21262d; border:1px solid #30363d; color:#c9d1d9;">Solicitar Registro</button>
+                </form>
+                <div style="text-align: center; font-size: 12px; color: #8b949e;">
+                    ¿Ya tienes cuenta? <a class="auth-toggle" onclick="switchAuthSubSection('login')">Inicia sesión aquí</a>
+                </div>
+            </div>
+
+            <div id="auth-forgot" class="auth-box" style="display:none;">
+                <h3 style="margin-top:0; text-align:center; color:#f0f6fc;">Restaurar Contraseña</h3>
+                <p style="font-size:12px; color:#8b949e; text-align:center; margin-bottom:16px;">Ingresa tu correo y te enviaremos las instrucciones de recuperación.</p>
+                <form onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label>Correo Electrónico</label>
+                        <input type="email" class="form-control" placeholder="correo@ejemplo.com" required>
+                    </div>
+                    <button type="submit" class="btn-github" style="width:100%; margin-bottom:16px;">Enviar instrucciones</button>
+                </form>
+                <div style="text-align: center; font-size: 12px; color: #8b949e;">
+                    <a class="auth-toggle" onclick="switchAuthSubSection('login')">Volver al inicio de sesión</a>
+                </div>
+            </div>
         </div>
 
         <div id="foro" class="content-section" style="display:none;">
@@ -205,6 +306,21 @@
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
             document.getElementById(sectionId).style.display = 'block';
             document.getElementById('tab-' + sectionId).classList.add('active');
+            
+            // Si entramos a la sección de acceso, nos aseguramos de mostrar el login por defecto
+            if(sectionId === 'acceso') {
+                switchAuthSubSection('login');
+            }
+        }
+
+        function switchAuthSubSection(subSection) {
+            document.getElementById('auth-login').style.display = 'none';
+            document.getElementById('auth-register').style.display = 'none';
+            document.getElementById('auth-forgot').style.display = 'none';
+
+            if(subSection === 'login') document.getElementById('auth-login').style.display = 'block';
+            if(subSection === 'register') document.getElementById('auth-register').style.display = 'block';
+            if(subSection === 'forgot') document.getElementById('auth-forgot').style.display = 'block';
         }
 
         function toggleText(textId, button) {
