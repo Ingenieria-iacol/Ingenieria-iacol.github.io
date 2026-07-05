@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Ind. I.A.Col - Hub de Ingeniería</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <style>
         /* Colores oficiales del tema oscuro de GitHub */
         body {
@@ -24,18 +25,6 @@
             max-width: 1012px;
             margin: 40px auto;
             padding: 0 16px;
-        }
-        .btn-github {
-            background-color: #238636;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        .btn-github:hover {
-            background-color: #2ea44f;
         }
         .tab {
             background: none;
@@ -91,76 +80,30 @@
             display: none;
             margin-top: 8px;
         }
-        /* Estilos del Formulario de Acceso */
-        .auth-box {
-            background-color: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 24px;
-            max-width: 340px;
-            margin: 0 auto;
-        }
-        .form-group {
-            margin-bottom: 16px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 14px;
-            color: #f0f6fc;
-        }
-        .form-control {
-            width: 100%;
-            padding: 6px 12px;
-            font-size: 14px;
-            background-color: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            color: #c9d1d9;
-            box-sizing: border-box;
-        }
-        .form-control:focus {
-            border-color: #58a6ff;
-            outline: none;
-        }
-        .auth-toggle {
-            color: #58a6ff;
-            text-decoration: none;
-            font-size: 12px;
-            cursor: pointer;
-        }
-        .auth-toggle:hover {
-            text-decoration: underline;
-        }
-        /* Botón estilo Google */
-        .btn-google {
-            background-color: #ffffff;
-            color: #1f2328;
-            padding: 10px 16px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            border: 1px solid #d0d7de;
-            cursor: pointer;
-            font-size: 14px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .btn-google:hover {
-            background-color: #f6f8fa;
-        }
     </style>
 </head>
 <body>
 
+    <div id="g_id_onload"
+         data-client_id="TU_CLIENT_ID_DE_GOOGLE.apps.googleusercontent.com"
+         data-context="signin"
+         data-ux_mode="popup"
+         data-callback="handleCredentialResponse"
+         data-auto_select="false"
+         data-close_on_tap_outside="false">
+    </div>
+
     <div class="navbar">
         <div style="font-weight: 600; color: #f0f6fc;">🤖 Ind. I.A.Col / Pioneer's Hub</div>
         <div>
-            <a class="btn-github" onclick="switchTab('acceso')">Ingresar al Hub</a>
+            <div class="g_id_signin"
+                 data-type="standard"
+                 data-shape="rectangular"
+                 data-theme="outline"
+                 data-text="signin_with"
+                 data-size="large"
+                 data-logo_alignment="left">
+            </div>
         </div>
     </div>
 
@@ -171,7 +114,6 @@
         <div style="display: flex; border-bottom: 1px solid #30363d; margin-bottom: 24px;">
             <button id="tab-acerca" class="tab active" onclick="switchTab('acerca')">📖 Acerca de</button>
             <button id="tab-brochure" class="tab" onclick="switchTab('brochure')">💎 Brochure</button>
-            <button id="tab-acceso" class="tab" onclick="switchTab('acceso')">🔐 Acceso</button>
             <button id="tab-foro" class="tab" onclick="switchTab('foro')">💬 Foro</button>
             <button id="tab-idi" class="tab" onclick="switchTab('idi')">🔬 I+D+i</button>
         </div>
@@ -179,7 +121,7 @@
         <div id="acerca" class="content-section">
             <div style="background-color: #161b22; padding: 24px; border: 1px solid #30363d; border-radius: 6px;">
                 <h2 style="margin-top: 0; color: #f0f6fc; font-size: 20px;">Ind. I.A.Col</h2>
-                <p style="line-height: 1.6; margin-bottom: 0;">Somos una organization de ingeniería de vanguardia dedicada a la investigación, desarrollo e innovación (I+D+i). El **Hub de Ingeniería Pioneer's** es nuestra plataforma central: la puerta de entrada para ingenieros que buscan transformar la industria mediante el uso de inteligencia artificial avanzada y herramientas de software especializado.</p>
+                <p style="line-height: 1.6; margin-bottom: 0;">Somos una organización de ingeniería de vanguardia dedicada a la investigación, desarrollo e innovación (I+D+i). El **Hub de Ingeniería Pioneer's** es nuestra plataforma central: la puerta de entrada para ingenieros que buscan transformar la industria mediante el uso de inteligencia artificial avanzada y herramientas de software especializado.</p>
             </div>
         </div>
 
@@ -248,51 +190,9 @@
             </div>
         </div>
 
-        <div id="acceso" class="content-section" style="display:none;">
-            <div id="auth-login" class="auth-box">
-                <h3 style="margin-top:0; text-align:center; color:#f0f6fc; margin-bottom: 8px;">Portal de Miembros</h3>
-                <p style="font-size:12px; color:#8b949e; text-align:center; margin-bottom:20px;">Acceso exclusivo mediante tu cuenta corporativa administrada de Google Workspace.</p>
-                
-                <button onclick="alert('Aquí se iniciará la validación OAuth 2.0 con las cuentas permitidas por tu consola de Google Admin.')" class="btn-google" style="margin-bottom: 20px;">
-                    <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/web-24dp/logo_googleg_color_24dp.png" alt="Google Logo" style="width:18px; height:18px;">
-                    Validar cuenta corporativa
-                </button>
-
-                <div style="text-align: center; font-size: 12px; color: #8b949e;">
-                    ¿No tienes una cuenta Pioneer? <a class="auth-toggle" onclick="switchAuthSubSection('register')">Solicita tu acceso premium</a>
-                </div>
-                <hr style="border: 0; border-top: 1px solid #30363d; margin: 16px 0;">
-                <button onclick="switchTab('brochure')" class="btn-secondary" style="width:100%; padding: 8px 0; font-weight:600;">💎 Ver Planes de Membresía</button>
-            </div>
-
-            <div id="auth-register" class="auth-box" style="display:none;">
-                <h3 style="margin-top:0; text-align:center; color:#f0f6fc;">Solicitud de Membresía</h3>
-                <p style="font-size:12px; color:#8b949e; text-align:center; margin-bottom:16px;">Mientras habilitamos la pasarela de pagos, envía tus datos para procesar el alta de tu cuenta administrada en Google Admin.</p>
-                
-                <form id="form-solicitud" onsubmit="enviarSolicitudPorCorreo(event)">
-                    <div class="form-group">
-                        <label>Nombre Completo</label>
-                        <input type="text" id="solicitud-nombre" class="form-control" placeholder="Ing. Alejandro Silva" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Tu Correo Electrónico Actual</label>
-                        <input type="email" id="solicitud-correo" class="form-control" placeholder="correo@ejemplo.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Plan de Interés / Notas adicionales</label>
-                        <textarea id="solicitud-notas" class="form-control" rows="3" placeholder="Ej: Me interesa la membresía premium por la suite ENTALPÍA." style="resize:none; font-family:inherit;" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-github" style="width:100%; margin-bottom:16px;">Enviar Solicitud por Email</button>
-                </form>
-                <div style="text-align: center; font-size: 12px; color: #8b949e;">
-                    ¿Ya posees credenciales? <a class="auth-toggle" onclick="switchAuthSubSection('login')">Volver al portal</a>
-                </div>
-            </div>
-        </div>
-
         <div id="foro" class="content-section" style="display:none;">
             <h2>Foro de Ingenieros</h2>
-            <p>Espacio de discusión técnica.</p>
+            <p>Espacio de discusión técnica restringido para miembros.</p>
         </div>
 
         <div id="idi" class="content-section" style="display:none;">
@@ -307,18 +207,6 @@
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
             document.getElementById(sectionId).style.display = 'block';
             document.getElementById('tab-' + sectionId).classList.add('active');
-            
-            if(sectionId === 'acceso') {
-                switchAuthSubSection('login');
-            }
-        }
-
-        function switchAuthSubSection(subSection) {
-            document.getElementById('auth-login').style.display = 'none';
-            document.getElementById('auth-register').style.display = 'none';
-
-            if(subSection === 'login') document.getElementById('auth-login').style.display = 'block';
-            if(subSection === 'register') document.getElementById('auth-register').style.display = 'block';
         }
 
         function toggleText(textId, button) {
@@ -332,18 +220,15 @@
             }
         }
 
-        // Función dinámica para redirigir la solicitud al mail corporativo del administrador
-        function enviarSolicitudPorCorreo(e) {
-            e.preventDefault();
-            const nombre = document.getElementById('solicitud-nombre').value;
-            const correo = document.getElementById('solicitud-correo').value;
-            const notas = document.getElementById('solicitud-notas').value;
+        // Función encargada de recibir la respuesta segura de Google
+        function handleCredentialResponse(response) {
+            // Aquí Google nos devuelve un token seguro (JWT) en 'response.credential'
+            console.log("Token JWT recibido de Google: " + response.credential);
             
-            const destinatario = "iacol@desarrollosdeia.org";
-            const asunto = encodeURIComponent("Solicitud de Acceso - Hub de Ingeniería Pioneer's");
-            const cuerpo = encodeURIComponent(`Hola Admin de Ind. I.A.Col,\n\nSe ha recibido una nueva solicitud de registro para el Hub:\n\nNombre: ${nombre}\nCorreo de contacto: ${correo}\nDetalles/Plan: ${notas}\n\nPor favor, gestionar el alta de esta cuenta en la consola de Google Admin.`);
-            
-            window.location.href = `mailto:${destinatario}?subject=${asunto}&body=${cuerpo}`;
+            // Lógica técnica posterior: 
+            // 1. Decodificar el token para extraer el correo electrónico del usuario.
+            // 2. Validar mediante JavaScript si el dominio del correo termina en tu Workspace oficial.
+            alert("¡Autenticación con Google iniciada con éxito! Próximo paso: Vincular las credenciales en la consola de Google Cloud.");
         }
     </script>
 
