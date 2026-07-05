@@ -215,18 +215,30 @@
 
         /**
          * Función Principal: Ingresar al Hub
-         * Abre el selector de cuentas de Google y redirige a la aplicación central.
+         * Abre el selector de cuentas de Google en una ventana emergente limpia
+         * y redirige a la aplicación central de Cloud Run.
          */
         function ingresarAlHub() {
             // URL de tu aplicación en Cloud Run
             const urlCentral = "https://workspace-central-google-entalp-a-770607217265.us-west2.run.app/";
             
             // Construcción de la URL de Google para elegir cuenta
-            // Usamos encodeURIComponent para asegurar que la URL de destino sea válida
             const urlGoogleCambioCuenta = "https://accounts.google.com/AccountChooser?continue=" + encodeURIComponent(urlCentral);
             
-            // Redirección directa
-            window.location.href = urlGoogleCambioCuenta;
+            // Configuración del tamaño de la ventana emergente
+            const anchoVentana = 500;
+            const altoVentana = 650;
+            
+            // Cálculos matemáticos para centrar la ventana
+            const izquierda = (screen.width / 2) - (anchoVentana / 2);
+            const arriba = (screen.height / 2) - (altoVentana / 2);
+            
+            // Abrir la ventana emergente con aspecto de aplicación
+            window.open(
+                urlGoogleCambioCuenta, 
+                "SelectorCuentasGoogle", 
+                `width=${anchoVentana},height=${altoVentana},top=${arriba},left=${izquierda},toolbar=no,menubar=no,location=no,status=no,scrollbars=yes,resizable=yes`
+            );
         }
     </script>
 
