@@ -222,11 +222,8 @@
             const urlCentral = "https://workspace-central-google-entalp-a-770607217265.us-west2.run.app/";
             const urlGoogleCambioCuenta = "https://accounts.google.com/AccountChooser?continue=" + encodeURIComponent(urlCentral);
             
-            // 1. Abre el selector de cuentas de Google en una nueva pestaña
-            window.open(urlGoogleCambioCuenta, '_blank');
-            
-            // 2. Cierra inmediatamente esta pestaña actual (la de GitHub)
-            window.close();
+            // Redirecciona la ventana/pestaña actual directamente a Google
+            window.location.href = urlGoogleCambioCuenta;
         }
     </script>
 
