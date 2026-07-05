@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ind. I.A.Col - Hub de Ingeniería</title>
     <style>
-        /* Colores oficiales del tema oscuro de GitHub */
+        /* Estilos generales inspirados en GitHub Dark */
         body {
             background-color: #0d1117;
             color: #c9d1d9;
@@ -61,7 +61,6 @@
         .content-section {
             margin-top: 20px;
         }
-        /* Estilos para las tarjetas y botones de acción */
         .card {
             background-color: #161b22;
             padding: 16px;
@@ -102,7 +101,7 @@
     <div class="navbar">
         <div style="font-weight: 600; color: #f0f6fc;">🤖 Ind. I.A.Col / Pioneer's Hub</div>
         <div>
-            <!-- Botón que activa el panel de cambio de cuenta -->
+            <!-- Botón principal de acceso -->
             <button class="btn-github" onclick="ingresarAlHub()">Ingresar al Hub</button>
         </div>
     </div>
@@ -118,82 +117,50 @@
             <button id="tab-idi" class="tab" onclick="switchTab('idi')">🔬 I+D+i</button>
         </div>
 
-        <!-- Sección: Acerca de -->
+        <!-- Secciones de Contenido -->
         <div id="acerca" class="content-section">
             <div style="background-color: #161b22; padding: 24px; border: 1px solid #30363d; border-radius: 6px;">
                 <h2 style="margin-top: 0; color: #f0f6fc; font-size: 20px;">Ind. I.A.Col</h2>
-                <p style="line-height: 1.6; margin-bottom: 0;">Somos una organización de ingeniería de vanguardia dedicada a la investigación, desarrollo e innovación (I+D+i). El **Hub de Ingeniería Pioneer's** es nuestra plataforma central: la puerta de entrada para ingenieros que buscan transformar la industria mediante el uso de inteligencia artificial avanzada y herramientas de software especializado.</p>
+                <p style="line-height: 1.6; margin-bottom: 0;">Organización de ingeniería de vanguardia dedicada a la investigación, desarrollo e innovación (I+D+i). El Hub es la puerta de entrada para transformar la industria mediante IA y herramientas especializadas.</p>
             </div>
         </div>
 
-        <!-- Sección: Brochure -->
         <div id="brochure" class="content-section" style="display:none;">
-            <h3 style="color: #f0f6fc; font-size: 18px; margin-bottom: 16px;">Beneficios de Pertenecer al Hub</h3>
-            
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
                 <div class="card">
-                    <div>
-                        <h4 style="margin-top: 0; color: #58a6ff;">💼 Entorno Digital Potenciado</h4>
-                        <p style="font-size: 14px; color: #8b949e; margin-bottom: 0;">Acceso a una cuenta corporativa respaldada por Google Workspace.</p>
-                        <div id="text-c1" class="more-text">
-                            <p style="font-size: 14px; color: #8b949e; margin-top: 0;">Este entorno garantiza la continuidad de tus proyectos y herramientas colaborativas empresariales en tiempo real.</p>
-                        </div>
-                    </div>
+                    <h4 style="margin-top: 0; color: #58a6ff;">💼 Workspace Corporativo</h4>
+                    <p style="font-size: 14px; color: #8b949e;">Entorno digital potenciado con herramientas de Google Workspace.</p>
                     <div class="card-actions">
                         <button onclick="toggleText('text-c1', this)" class="btn-secondary">Leer más</button>
                     </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <h4 style="margin-top: 0; color: #58a6ff;">📊 Gestión de Proyectos (ERP)</h4>
-                        <p style="font-size: 14px; color: #8b949e; margin-bottom: 0;">Plataforma ERP integrada para la administración y control de desarrollos.</p>
-                        <div id="text-c2" class="more-text">
-                            <p style="font-size: 14px; color: #8b949e; margin-top: 0;">Permite la asignación eficiente de recursos, diagramas de Gantt y reportes automáticos.</p>
-                        </div>
+                    <div id="text-c1" class="more-text">
+                        <p style="font-size: 13px;">Garantiza colaboración en tiempo real y seguridad de datos.</p>
                     </div>
+                </div>
+                <div class="card">
+                    <h4 style="margin-top: 0; color: #58a6ff;">🧪 Software ENTALPÍA</h4>
+                    <p style="font-size: 14px; color: #8b949e;">Herramientas propietarias de simulación y cálculo técnico.</p>
                     <div class="card-actions">
                         <button onclick="toggleText('text-c2', this)" class="btn-secondary">Leer más</button>
                     </div>
-                </div>
-
-                <div class="card" style="grid-column: span 2;">
-                    <div>
-                        <h4 style="margin-top: 0; color: #58a6ff;">🧪 Suite de Software ENTALPÍA</h4>
-                        <p style="font-size: 14px; color: #8b949e; margin-bottom: 0;">Herramientas propietarias de simulación y cálculo técnico avanzado.</p>
-                        <div id="text-c3" class="more-text">
-                            <ul style="font-size: 14px; margin-top: 8px; padding-left: 20px; color: #c9d1d9;">
-                                <li>🔄 <strong>Modeladores de flujo:</strong> Simulación de fluidos industriales.</li>
-                                <li>🧮 <strong>Calculadoras especializadas:</strong> Algoritmos para problemas termodinámicos complejos.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <button onclick="toggleText('text-c3', this)" class="btn-secondary">Leer más</button>
+                    <div id="text-c2" class="more-text">
+                        <p style="font-size: 13px;">Modeladores de flujo y calculadoras termodinámicas avanzadas.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Sección: Foro -->
         <div id="foro" class="content-section" style="display:none;">
-            <div style="background-color: #161b22; padding: 24px; border: 1px solid #30363d; border-radius: 6px;">
-                <h2 style="color: #f0f6fc; font-size: 20px;">Foro de Ingenieros</h2>
-                <p>Espacio de discusión técnica restringido para miembros. Debes iniciar sesión para participar.</p>
-            </div>
+            <p>Acceso restringido. Por favor, ingresa al Hub para participar en las discusiones.</p>
         </div>
 
-        <!-- Sección: I+D+i -->
         <div id="idi" class="content-section" style="display:none;">
-            <div style="background-color: #161b22; padding: 24px; border: 1px solid #30363d; border-radius: 6px;">
-                <h2 style="color: #f0f6fc; font-size: 20px;">I+D+i</h2>
-                <p>Listado de proyectos científicos y tecnológicos en marcha asistidos por IA.</p>
-            </div>
+            <p>Proyectos de investigación y desarrollo asistidos por inteligencia artificial.</p>
         </div>
     </div>
 
     <script>
-        // Cambiar entre pestañas
+        // Lógica de navegación de pestañas
         function switchTab(sectionId) {
             document.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
@@ -201,7 +168,7 @@
             document.getElementById('tab-' + sectionId).classList.add('active');
         }
 
-        // Expandir/Colapsar textos
+        // Lógica para expandir texto
         function toggleText(textId, button) {
             const textElement = document.getElementById(textId);
             if (textElement.style.display === "block") {
@@ -214,31 +181,23 @@
         }
 
         /**
-         * Función Principal: Ingresar al Hub
-         * Abre el selector de cuentas de Google en una ventana emergente limpia
-         * y redirige a la aplicación central de Cloud Run.
+         * Función Integrada: Ingresar al Hub
+         * Esta versión utiliza 'prompt=select_account' para forzar a Google 
+         * a mostrar el panel de selección de cuenta.
          */
         function ingresarAlHub() {
-            // URL de tu aplicación en Cloud Run
-            const urlCentral = "https://workspace-central-google-entalp-a-770607217265.us-west2.run.app/";
+            // Tu URL de destino en Cloud Run
+            const urlDestino = "https://workspace-central-google-entalp-a-770607217265.us-west2.run.app/";
             
-            // Construcción de la URL de Google para elegir cuenta
-            const urlGoogleCambioCuenta = "https://accounts.google.com/AccountChooser?continue=" + encodeURIComponent(urlCentral);
-            
-            // Configuración del tamaño de la ventana emergente
-            const anchoVentana = 500;
-            const altoVentana = 650;
-            
-            // Cálculos matemáticos para centrar la ventana
-            const izquierda = (screen.width / 2) - (anchoVentana / 2);
-            const arriba = (screen.height / 2) - (altoVentana / 2);
-            
-            // Abrir la ventana emergente con aspecto de aplicación
-            window.open(
-                urlGoogleCambioCuenta, 
-                "SelectorCuentasGoogle", 
-                `width=${anchoVentana},height=${altoVentana},top=${arriba},left=${izquierda},toolbar=no,menubar=no,location=no,status=no,scrollbars=yes,resizable=yes`
-            );
+            // Construcción de la URL de autenticación de Google con selector de cuenta forzado
+            const urlGoogleAuth = "https://accounts.google.com/v3/signin/identifier?" + 
+                                 "continue=" + encodeURIComponent(urlDestino) + 
+                                 "&prompt=select_account" + // <-- Esto fuerza el panel de cambio de cuenta
+                                 "&flowName=GlifWebSignIn" + 
+                                 "&flowEntry=AddSession";
+
+            // Redirigir al usuario
+            window.location.href = urlGoogleAuth;
         }
     </script>
 
