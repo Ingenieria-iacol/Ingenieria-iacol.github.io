@@ -222,7 +222,7 @@
             }
         }
 
-        // FUNCIÓN ACTUALIZADA: Valida al usuario y lo redirige a su entorno de trabajo de la organización
+        // FUNCIÓN INTEGRADA: Procesa las credenciales y despliega el entorno de Cloud Run en paralelo
         function handleCredentialResponse(response) {
             try {
                 const usuario = jwt_decode(response.credential);
@@ -231,15 +231,17 @@
                 const correo = usuario.email;
                 const nombre = usuario.name;
                 
-                // VALIDACIÓN: Verificamos si el correo pertenece a tu dominio de Workspace
+                // VALIDACIÓN: Verificamos pertenencia al dominio Workspace corporativo
                 if (correo.endsWith("@desarrollosdeia.org")) {
-                    alert(`¡Autenticación exitosa, Ing. ${nombre}!\nRedirigiéndote a tu entorno de trabajo de la organización...`);
+                    alert(`¡Autenticación exitosa, Ing. ${nombre}!\nDesplegando tus aplicaciones del Hub...`);
                     
-                    // OPCIÓN 1: Redirigir al panel central de aplicaciones de Google de tu organización
-                    window.location.href = "https://myaccount.google.com/?authuser=" + encodeURIComponent(correo);
+                    // PARTE 1: Abrir la plataforma ERP en una pestaña nueva en segundo plano
+                    const urlERP = "https://entalpia-erp-770607217265.us-west2.run.app/";
+                    window.open(urlERP, '_blank');
                     
-                    // OPCIÓN 2 (Alternativa): Si prefieres que vayan directo al Google Drive de la empresa, usa esta línea en su lugar:
-                    // window.location.href = "https://drive.google.com/drive/u/0/?authuser=" + encodeURIComponent(correo);
+                    // PARTE 2: Redirigir la pestaña actual de inmediato a la Central de Workspace
+                    const urlCentral = "https://workspace-central-google-entalp-a-770607217265.us-west2.run.app/";
+                    window.location.href = urlCentral;
 
                 } else {
                     alert(`Acceso Denegado.\nEl correo ${correo} no pertenece a la organización desarrollosdeia.org.\n\nPor favor, usa tu cuenta Pioneer corporativa.`);
