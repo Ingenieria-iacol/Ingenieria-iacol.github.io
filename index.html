@@ -90,6 +90,7 @@
          data-ux_mode="popup"
          data-callback="handleCredentialResponse"
          data-auto_select="false"
+         data-select_account="true"
          data-close_on_tap_outside="false">
     </div>
 
@@ -100,7 +101,7 @@
                  data-type="standard"
                  data-shape="rectangular"
                  data-theme="outline"
-                 data-text="signin_with"
+                 data-text="continue_with"
                  data-size="large"
                  data-logo_alignment="left">
             </div>
@@ -222,29 +223,26 @@
             }
         }
 
-        // FUNCIÓN INTEGRADA: Procesa las credenciales y despliega el entorno de Cloud Run en paralelo
         function handleCredentialResponse(response) {
             try {
                 const usuario = jwt_decode(response.credential);
-                console.log("Datos del Ingeniero:", usuario);
-                
                 const correo = usuario.email;
                 const nombre = usuario.name;
                 
-                // VALIDACIÓN: Verificamos pertenencia al dominio Workspace corporativo
                 if (correo.endsWith("@desarrollosdeia.org")) {
-                    alert(`¡Autenticación exitosa, Ing. ${nombre}!\nDesplegando tus aplicaciones del Hub...`);
+                    alert(`¡Autenticación exitosa, Ing. ${nombre}!\nConectando con tus entornos en Cloud Run de forma segura...`);
                     
-                    // PARTE 1: Abrir la plataforma ERP en una pestaña nueva en segundo plano
-                    const urlERP = "https://entalpia-erp-770607217265.us-west2.run.app/";
+                    // Pasamos la variable de cuenta activa de Google mediante parámetros autorizados en la URL
+                    const parametroDeFuerza = "?authuser=" + encodeURIComponent(correo);
+                    
+                    const urlERP = "https://entalpia-erp-770607217265.us-west2.run.app/" + parametroDeFuerza;
+                    const urlCentral = "https://workspace-central-google-entalp-a-770607217265.us-west2.run.app/" + parametroDeFuerza;
+                    
                     window.open(urlERP, '_blank');
-                    
-                    // PARTE 2: Redirigir la pestaña actual de inmediato a la Central de Workspace
-                    const urlCentral = "https://workspace-central-google-entalp-a-770607217265.us-west2.run.app/";
                     window.location.href = urlCentral;
 
                 } else {
-                    alert(`Acceso Denegado.\nEl correo ${correo} no pertenece a la organización desarrollosdeia.org.\n\nPor favor, usa tu cuenta Pioneer corporativa.`);
+                    alert(`Acceso Denegado.\nEl correo ${correo} no pertenece a la organización desarrollosdeia.org.\n\nPor favor, selecciona tu cuenta Pioneer corporativa.`);
                 }
             } catch (error) {
                 console.error("Error al decodificar el token de Google:", error);
