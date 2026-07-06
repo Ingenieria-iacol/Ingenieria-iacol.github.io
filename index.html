@@ -80,6 +80,20 @@
             display: none;
             margin-top: 8px;
         }
+        /* Contenedor del Chat para adaptarlo al diseño */
+        .chat-container {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            background-color: #161b22;
+            overflow: hidden;
+        }
+        .chat-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -192,8 +206,10 @@
         </div>
 
         <div id="foro" class="content-section" style="display:none;">
-            <h2>Foro de Ingenieros</h2>
-            <p>Espacio de discusión técnica restringido para miembros.</p>
+            <h2 style="color: #f0f6fc; font-size: 20px; margin-bottom: 12px;">💬 Foro de Ingenieros (Google Chat)</h2>
+            <div class="chat-container">
+                <iframe src="https://chat.google.com" class="chat-iframe" allow="geolocation; microphone; camera"></iframe>
+            </div>
         </div>
 
         <div id="idi" class="content-section" style="display:none;">
@@ -206,12 +222,6 @@
     
     <script>
         function switchTab(sectionId) {
-            // Si el usuario hace clic en el foro, lo redirigimos a la URL especificada
-            if (sectionId === 'foro') {
-                window.location.href = "https://hub-entalp-a-770607217265.us-west2.run.app";
-                return; // Detiene la ejecución para que no intente cambiar de pestaña visualmente aquí
-            }
-
             document.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
             document.getElementById(sectionId).style.display = 'block';
