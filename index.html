@@ -95,7 +95,7 @@
             border: none;
         }
 
-        /* --- NUEVOS ESTILOS PARA LA SECCIÓN I+D+i (Estilo GitHub-Netflix) --- */
+        /* --- ESTILOS SECCIÓN I+D+i (Estilo GitHub-Netflix) --- */
         .idi-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -287,7 +287,7 @@
         <div id="foro" class="content-section" style="display:none;">
             <h2 style="color: #f0f6fc; font-size: 20px; margin-bottom: 12px;">💬 Foro de Ingenieros (Google Chat)</h2>
             <div class="chat-container">
-                <iframe src="https://chat.google.com" class="chat-iframe" allow="geolocation; microphone; camera"></iframe>
+                <iframe src="https://chat.google.com/app/chat/0MJcMKAAAAE" class="chat-iframe" allow="geolocation; microphone; camera"></iframe>
             </div>
         </div>
 
@@ -356,18 +356,16 @@
             }
         }
 
-        // LÓGICA DE CONTROL PARA EL BOTÓN "AGREGAR TEMA"
         function agregarNuevoTema() {
             const passwordCorrecta = "Ti83060910068#";
             const passwordIngresada = prompt("Ingresa la contraseña de administración para agregar un nuevo tema:");
             
             if (passwordIngresada === null) {
-                return; // El usuario canceló el prompt
+                return;
             }
             
             if (passwordIngresada === passwordCorrecta) {
                 alert("Contraseña correcta. Abriendo el asistente de creación de proyectos de I+D+i...");
-                // Aquí puedes cambiar la URL a tu formulario o lógica de creación deseada
                 window.open("https://ejemplo.com/crear-tema-idi", "_blank");
             } else {
                 alert("Acceso denegado. La contraseña ingresada es incorrecta.");
