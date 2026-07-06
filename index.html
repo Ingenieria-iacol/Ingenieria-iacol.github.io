@@ -122,7 +122,7 @@
         <div id="acerca" class="content-section">
             <div style="background-color: #161b22; padding: 24px; border: 1px solid #30363d; border-radius: 6px;">
                 <h2 style="margin-top: 0; color: #f0f6fc; font-size: 20px;">Ind. I.A.Col</h2>
-                <p style="line-height: 1.6; margin-bottom: 0;">El Hub de Ingeniería Pioneer's es un ecosistema digital especializado en sistemas de fluidos (GN y GLP). Nuestro espacio virtual conecta a emprendedores, empresas, inversores y talento técnico para impulsar la investigación, desarrollo e innovación (I+D+i) en el sector. Transformamos el ejercicio de la distribución y suministro de gas por redes mediante la integración de soluciones tecnológicas en termodinámica, metrología y regulación normativa.
+                <p style="line-height: 1.6; margin-bottom: 0;">El Hub de Ingeniería Pioneer's es un ecosistema digital especializado en sistemas de fluidos (GN y GLP). Nuestro espacio virtual conecta a emprendedores, empresas, inversores y talento técnico para impulsar la investigación, desarrollo e innovación (I+D+i) en el sector. Transformamos el ejercicio de la distribución y suministro de gas por redes mediante la integración de soluciones tecnológicas en termodinámica, metrología y regulación normativa.</p>
             </div>
         </div>
 
@@ -206,6 +206,12 @@
     
     <script>
         function switchTab(sectionId) {
+            // Si el usuario hace clic en el foro, lo redirigimos a la URL especificada
+            if (sectionId === 'foro') {
+                window.location.href = "https://hub-entalp-a-770607217265.us-west2.run.app";
+                return; // Detiene la ejecución para que no intente cambiar de pestaña visualmente aquí
+            }
+
             document.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
             document.getElementById(sectionId).style.display = 'block';
@@ -232,7 +238,6 @@
                 if (correo.endsWith("@desarrollosdeia.org")) {
                     alert(`¡Autenticación exitosa, Ing. ${nombre}!\nConectando con tus entornos en Cloud Run de forma segura...`);
                     
-                    // Pasamos la variable de cuenta activa de Google mediante parámetros autorizados en la URL
                     const parametroDeFuerza = "?authuser=" + encodeURIComponent(correo);
                     
                     const urlERP = "https://entalpia-erp-770607217265.us-west2.run.app/" + parametroDeFuerza;
