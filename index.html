@@ -110,7 +110,6 @@
             display: flex;
             flex-direction: column;
             transition: transform 0.2s ease, border-color 0.2s ease;
-            cursor: pointer;
             text-decoration: none;
             color: inherit;
         }
@@ -160,6 +159,7 @@
             min-height: 210px;
             text-align: center;
             padding: 20px;
+            cursor: pointer;
         }
         .idi-card-add:hover {
             border-color: #238636;
@@ -172,6 +172,34 @@
         }
         .idi-card-add:hover .idi-add-icon {
             color: #238636;
+        }
+
+        /* --- NUEVOS ESTILOS PARA LA SECCIÓN ACERCA DE --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .about-feature-card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 16px;
+        }
+        .about-feature-card h3 {
+            margin-top: 0;
+            font-size: 16px;
+            color: #58a6ff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .about-feature-card p {
+            font-size: 13px;
+            color: #8b949e;
+            line-height: 1.5;
+            margin: 0;
         }
     </style>
 </head>
@@ -213,15 +241,59 @@
         </div>
 
         <div id="acerca" class="content-section">
-            <div style="background-color: #161b22; padding: 24px; border: 1px solid #30363d; border-radius: 6px;">
+            <div style="background-color: #161b22; padding: 24px; border: 1px solid #30363d; border-radius: 6px; margin-bottom: 24px;">
                 <h2 style="margin-top: 0; color: #f0f6fc; font-size: 20px;">Ind. I.A.Col</h2>
-                <p style="line-height: 1.6; margin-bottom: 0;">El Hub de Ingeniería Pioneer's es un ecosistema digital especializado en sistemas de fluidos (GN y GLP). Nuestro espacio virtual conecta a emprendedores, empresas, inversores y talento técnico para impulsar la investigación, desarrollo e innovación (I+D+i) en el sector. Transformamos el ejercicio de la distribución y suministro de gas por redes mediante la integración de soluciones tecnológicas en termodinámica, metrología y regulación normativa.</p>
+                <p style="line-height: 1.6; margin-bottom: 0; font-size: 15px;">
+                    🔥 <strong>El Hub de Ingeniería Pioneer's</strong> es un ecosistema digital especializado en sistemas de fluidos (GN y GLP). Nuestro espacio virtual conecta a emprendedores, empresas, inversores y talento técnico para impulsar la investigación, desarrollo e innovación (I+D+i) en el sector. Transformamos el ejercicio de la distribución y suministro de gas por redes mediante la integración de soluciones tecnológicas en termodinámica, metrología y regulación normativa. 🧠⚙️
+                </p>
+            </div>
+
+            <h2 style="color: #f0f6fc; font-size: 18px; margin-top: 32px; margin-bottom: 8px;">🛠️ Alcance y Soluciones del Ecosistema</h2>
+            <p style="color: #8b949e; font-size: 14px; margin-top: 0;">Ejes técnicos y beneficios operativos disponibles en nuestra plataforma:</p>
+
+            <div class="about-grid">
+                <div class="about-feature-card">
+                    <h3>🤖 Portal de Acceso Asistido</h3>
+                    <p>Acceso inteligente al ecosistema asistido y optimizado por inteligencias artificiales entrenadas específicamente para el sector de la ingeniería de fluidos.</p>
+                </div>
+                <div class="about-feature-card">
+                    <h3>🧮 Calculadora de Ventilación</h3>
+                    <p>Módulo de cálculo especializado para el dimensionamiento exacto y validación técnica de sistemas de ventilación según requerimientos de seguridad.</p>
+                </div>
+                <div class="about-feature-card">
+                    <h3>🔄 Modelador de Flujo Mueller</h3>
+                    <p>Simulación analítica avanzada mediante algoritmos específicos para evaluar dinámicas, presiones y flujos en redes virtuales de tuberías.</p>
+                </div>
+                <div class="about-feature-card">
+                    <h3>🧪 Simulador de Vaporización GLP</h3>
+                    <p>Herramienta predictiva para modelar el comportamiento termodinámico y el cambio de fase del gas licuado de petróleo bajo variables críticas.</p>
+                </div>
+                <div class="about-feature-card">
+                    <h3>🔥 Sistemas de Combustión</h3>
+                    <p>Investigaciones aplicadas, normativas y parametrizaciones detalladas orientadas a redes residenciales, comerciales e industriales de gran escala.</p>
+                </div>
+                <div class="about-feature-card">
+                    <h3>🎓 Reentrenamiento Competente</h3>
+                    <p>Módulos pedagógicos avanzados orientados al fortalecimiento de las habilidades operativas y la certificación ágil de competencias del personal.</p>
+                </div>
+                <div class="about-feature-card">
+                    <h3>💼 Gestión Automatizada</h3>
+                    <p>Generación ágil de cuentas de cobro para personas naturales, junto con herramientas integradas para la estructuración de flujos de trabajo web.</p>
+                </div>
+                <div class="about-feature-card">
+                    <h3>🌐 Integración de Procesos (ERP/CRM)</h3>
+                    <p>Entorno centralizado para la administración del negocio, control de hitos, asignación de recursos técnicos y gestión de clientes.</p>
+                </div>
+                <div class="about-feature-card">
+                    <h3>🔌 Conexiones Físicas y Control</h3>
+                    <p>Compatibilidad con arquitecturas físicas automatizadas para el monitoreo en tiempo real, metrología digital y adquisición de datos en campo.</p>
+                </div>
             </div>
         </div>
 
         <div id="brochure" class="content-section" style="display:none;">
             <h3 style="color: #f0f6fc; font-size: 18px; margin-bottom: 16px;">Beneficios de Pertenecer al Hub</h3>
-            
+             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
                 <div class="card">
                     <div>
@@ -294,7 +366,7 @@
         <div id="idi" class="content-section" style="display:none;">
             <h2 style="margin-top: 0; color: #f0f6fc; font-size: 20px;">Investigación, Desarrollo e Innovación</h2>
             <p style="color: #8b949e; font-size: 14px; margin-top: 0; margin-bottom: 20px;">Explora los proyectos científicos y tecnológicos en marcha dentro del Hub.</p>
-            
+             
             <div class="idi-grid">
                 <a href="https://ejemplo.com/proyecto-termodinamica" target="_blank" class="idi-card">
                     <div class="idi-img-container">
@@ -336,7 +408,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
-    
+     
     <script>
         function switchTab(sectionId) {
             document.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
@@ -359,11 +431,11 @@
         function agregarNuevoTema() {
             const passwordCorrecta = "Ti83060910068#";
             const passwordIngresada = prompt("Ingresa la contraseña de administración para agregar un nuevo tema:");
-            
+             
             if (passwordIngresada === null) {
                 return;
             }
-            
+             
             if (passwordIngresada === passwordCorrecta) {
                 alert("Contraseña correcta. Abriendo el asistente de creación de proyectos de I+D+i...");
                 window.open("https://ejemplo.com/crear-tema-idi", "_blank");
@@ -377,15 +449,15 @@
                 const usuario = jwt_decode(response.credential);
                 const correo = usuario.email;
                 const nombre = usuario.name;
-                
+                 
                 if (correo.endsWith("@desarrollosdeia.org")) {
                     alert(`¡Autenticación exitosa, Ing. ${nombre}!\nConectando con tus entornos en Cloud Run de forma segura...`);
-                    
+                     
                     const parametroDeFuerza = "?authuser=" + encodeURIComponent(correo);
-                    
+                     
                     const urlERP = "https://entalpia-erp-770607217265.us-west2.run.app/" + parametroDeFuerza;
                     const urlCentral = "https://workspace-central-google-entalp-a-770607217265.us-west2.run.app/" + parametroDeFuerza;
-                    
+                     
                     window.open(urlERP, '_blank');
                     window.location.href = urlCentral;
 
